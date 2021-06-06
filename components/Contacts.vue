@@ -2,15 +2,13 @@
     <section class="contact">
         <div class="container">
             <h2 class="title"> Contact me! </h2>
+            <Message v-if="message" :message="message" />
             <form @submit.prevent="onSubmit" class="contact-form">
-                <label> Name: </label>
-                <input v-model="user.name" type="text">
-                <label> Email: </label>
-                <input v-model="user.email" type="text">
-                <label> Text: </label>
-                <textarea v-model="user.text" cols="30" rows="10"></textarea>
+                <AppInput v-model="user.name"> Name: </AppInput>
+                <AppInput v-model="user.email" type="email"> Email: </AppInput>
+                <AppTextArea v-model="user.text"> Text: </AppTextArea>
                 <div class="controls">
-                    <button class="btn btnWhite"> Submit! </button>
+                    <AppButton class="btnWhite"> Submit! </AppButton>
                 </div>
             </form>
         </div>
@@ -21,6 +19,7 @@
 export default {
     data () {
         return {
+            message: null,
             user: {
                 name: '',
                 email: '',
@@ -31,6 +30,7 @@ export default {
     methods: {
         onSubmit () {
             console.log(this.user)
+            this.message = 'Submited'
         }
     }
 }

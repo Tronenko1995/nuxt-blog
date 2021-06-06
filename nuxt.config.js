@@ -26,6 +26,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/app-components'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -43,7 +44,7 @@ export default {
   build: {
     babel:{
       plugins: [
-        ['@babel/plugin-proposal-private-methods', { loose: true }]
+        ['@babel/plugin-proposal-private-methods', { loose: true }],
       ]
     }
   }

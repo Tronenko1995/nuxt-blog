@@ -2,13 +2,12 @@
     <section class="new-comment">
         <div class="container">
             <h2 class="title"> New Comment! </h2>
+            <Message v-if="message" :message="message" />
             <form @submit.prevent="onSubmit" class="contact-form">
-                <label> Name: </label>
-                <input v-model="comment.name" type="text">
-                <label> Text: </label>
-                <textarea v-model="comment.text" cols="30" rows="10"></textarea>
+                <AppInput v-model="comment.name" type="text"> Name: </AppInput>
+                <AppTextArea v-model="comment.text" type="text"> Text: </AppTextArea>
                 <div class="controls">
-                    <button class="btn btnPrimary"> Submit! </button>
+                    <AppButton class="btnWhite"> Submit! </AppButton>
                 </div>
             </form>
         </div>
@@ -19,6 +18,7 @@
 export default {
     data () {
         return {
+            message: null,
             comment: {
                 name: '',
                 text: ''
@@ -27,6 +27,7 @@ export default {
     },
     methods: {
         onSubmit () {
+            this.message = 'Submited!'
             console.log(this.comment)
         }
     }
